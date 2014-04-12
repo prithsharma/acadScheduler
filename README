@@ -1,0 +1,8 @@
+DataBase Name : acadSchedular
+Collections :
+ 	courses -
+ 		"instructor_name" , "course_name" , "timing", "days" , "students" 
+ 	schedule
+ 		"name", "M" : ["timing", "course_name"] "T" ...... 
+
+db.schedule.insert({"name" : "test instructor", "M" : [], "T" : [], "W" : [], "Th" : [], "F" : []})
