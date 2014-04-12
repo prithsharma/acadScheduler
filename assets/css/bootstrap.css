@@ -8,7 +8,7 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
+@import url("bootstrap-glyphicons.css");
 
 .clearfix {
   *zoom: 1;

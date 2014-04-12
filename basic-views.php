@@ -29,11 +29,44 @@ echo "<html>
 			defaultView: 'agendaWeek',
 			minTime: 8,
 			maxTime: 19,
-			//editable: true,
+			editable: false,
 			events:	'includes/feed.php',
-			eventRender: function(event, element) {
-        		element.simpletip();
-    		}
+			eventMouseover: function(calEvent, jsEvent){
+				$('<p></p>')
+			        .addClass('tooltip')
+			        .text(calEvent.title)
+			        .appendTo('body')
+			    $(this).css('z-index', 10000);
+			    $('.tooltip').fadeIn('fast');
+			    $('.tooltip').fadeTo('10', 1.9);
+				$(this).mouseover(function(e) {
+			        
+			    }).mousemove(function(e) {
+			        $('.tooltip').css('top', e.pageY + 10);
+			        $('.tooltip').css('left', e.pageX + 20);
+			    });
+				
+
+					/*$(this).mouseover(function(e){
+				        //alert(calEvent.title);
+				        $(this).css('z-index', 10000);
+				        // Hover over code
+				        $('<p></p>')
+				        .addClass('tooltip')
+				        .text(calEvent.title)
+				        .appendTo('body')
+				        .fadeIn('slow');
+					}).mousemove(function(e) {
+				        var mousex = e.pageX + 20; //Get X coordinates
+				        var mousey = e.pageY + 10; //Get Y coordinates
+				        $('.tooltip')
+				        .css({ top: mousey, left: mousex })
+					});*/
+			},
+			eventMouseout: function(calEvent, jsEvent) {
+  	  			$(this).css('z-index', 8);
+    			$('.tooltip').remove();
+			},
 		});
 	});
 </script>

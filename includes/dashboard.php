@@ -7,6 +7,7 @@
 
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="includes/dashboard.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -76,6 +77,6 @@
     
     <script type="text/javascript" src="datepicker/jquery.min.js"></script>
     <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <link rel="stylesheet" href="jquery-ui/css/redmond/jquery-ui-1.9.2.custom.min.css"></script>
+    <link rel="stylesheet" href="jquery-ui/css/redmond/jquery-ui-1.9.2.custom.min.css">
 
 
