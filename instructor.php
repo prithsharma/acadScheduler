@@ -11,7 +11,7 @@ $db = $m->$dbname;
 
 // Get the users collection
 $c_users = $db->users;*/
-echo '
+/*echo '
 <form action="addcourse.php" method="POST">
 Course Number:
 <input type="text" id="course_num" name="course_num"  />
@@ -32,24 +32,37 @@ Timing
 </br>
 <input  name="submitForm" id="submitForm" type="submit" value="Add" />
 </form>
-';
+';*/
 
 echo '
+<center>
 <form action="extraclass.php" method="POST">
-Course Number:
-<input type="text" id="course_num" name="course_num"  />
-<input type="text" id="course_num" name="date[]">DD</input>
-<input type="text" id="course_num" name="date[]">MM</input>
-<input type="text" id="course_num" name="date[]">YY</input>
-Timing
+<table>
+  <tr>
+  <td>Course Number:</td>
+  <td> <input type="text" id="course_num" name="course_num" /> </td>
+<tr>
+<td>Date:</td>
+<td><input type="text" type="text" id="datepicker"></td>
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+</script>
+<tr>
+<td>Timing:</td>
+<td>
 <select name="timing">
   <option value="8-9">8-9</option>	
   <option value="9-10">9-10</option>
   <option value="10-11">10-11</option>
   <option value="11-12">11-12</option>
 </select>
-<input  name="submitForm" id="submitForm" type="submit" value="ExtraClass" />
+</td>
+</table>
+<button class="btn btn-primary" name="submitForm" id="submitForm" type="submit">ExtraClass</button>
 </form>
+</center>
 ';
 
 

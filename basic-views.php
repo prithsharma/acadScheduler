@@ -10,6 +10,7 @@ echo "<html>
 <script src='lib/jquery.min.js'></script>
 <script src='lib/jquery-ui.custom.min.js'></script>
 <script src='lib/fullcalendar.min.js'></script>
+<script type='text/javascript' src='includes/jquery.simpletip.min.js'></script>
 <script>
 
 	$(document).ready(function() {
@@ -21,19 +22,20 @@ echo "<html>
 		
 		$('#calendar').fullCalendar({
 			header: {
-				left: 'prev,next today',
-				center: 'title'
-				//right: 'basicWeek'
+				left: 'prev,next',
+				center: 'title',
+				right: 'month, agendaWeek, agendaDay'
 			},
 			defaultView: 'agendaWeek',
 			minTime: 8,
 			maxTime: 19,
 			//editable: true,
-			events:	'includes/feed.php'
+			events:	'includes/feed.php',
+			eventRender: function(event, element) {
+        		element.simpletip();
+    		}
 		});
-		
 	});
-
 </script>
 <style>
 
