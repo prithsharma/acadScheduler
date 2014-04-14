@@ -31,13 +31,12 @@ else{
 
 	$course_students = $courses->findOne( array('course_name'=>$extraClass_course) )['students'];
 	$all_courses = array();
-	print_r($course_students);
-	echo '<br>';
+
 	if (!empty($course_students)){
 		//echo 'hi';
 		//generate list of all courses that could possibly clash
 		foreach ($course_students as $student) {
-			$student_courses = $users->findOne( array('userid'=>$student) )['courses'];
+			$student_courses = $users->findOne( array('username'=>$student) )['courses'];
 			//echo gettype($student_courses);
 			if (!empty($student_courses)) {
 				$all_courses = array_merge($all_courses, $student_courses);
@@ -49,19 +48,11 @@ else{
 		//check clashes
 		$clash = 0;
 		foreach ($all_courses as $course) {
-			$course_days = $courses->findOne( array('course_name'=>$course) )['days'];
-			$course_slot = $courses->findOne( array('course_name'=>$course) )['timing'];
-			
-			if (in_array($extraClass_day, $course_days) && $course_slot==$extraClass_slot ){
-				echo "Clash with regular class of ".$course."<br>";
-				$clash = 1;
-			}
-			if(!empty($courses->findOne( array('course_name'=>$course) )['extra_class'])){
-				$course_extraSchedule = $courses->findOne( array('course_name'=>$course) )['extra_class'];
-				foreach ($course_extraSchedule as $date => $slot) {
-					if($date == $extraClass_date && $extraClass_slot == $slot)
-					{
-						echo "Clash with extra class of ".$course."<br>";
+			$course_schedule = $courses->findOne( array('course_name'=>$course) )['schedule'];
+			if (!empty($course_schedule)){
+				foreach ($course_schedule as $day => $slot) {
+					if($day == $extraClass_day && $slot == $extraClass_slot){
+						echo "Clash with ".$course."<br>";
 						$clash = 1;
 						break;
 					}
@@ -69,11 +60,9 @@ else{
 			}
 		}
 		if($clash == 0){
-			//echo 'no clash';
 			$courses->update( array('course_name'=>$extraClass_course), array(
 				'$push'=> array("extra_class"=> array($extraClass_date=>intval($extraClass_slot)))
 			));
-			echo 'Extra class created';
 		}
 	}	
 }
@@ -92,7 +81,7 @@ echo "instructor want to held an extra class of ". $course. " on ". $date[0]. "/
 echo "students registered in the course are \n";
 $con = new MongoClient();
  if($con){
- 	$db = $con->acadScheduler;
+ 	$db = $con->acadSchedular;
  	$col_courses = $db->courses;
  	$col_schedule = $db->schedule;
  	$result = $col_courses->find();

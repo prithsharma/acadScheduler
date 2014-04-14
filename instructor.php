@@ -43,10 +43,12 @@ echo '
   <td> <input type="text" id="course_num" name="course_num" /> </td>
 <tr>
 <td>Date:</td>
-<td><input type="text" type="text" id="datepicker"></td>
+<td><input type="text" name="date" id="datepicker"></td>
 <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({
+      dateFormat: "yy-mm-dd"
+    });
   });
 </script>
 <tr>
@@ -60,7 +62,7 @@ echo '
 </select>
 </td>
 </table>
-<button class="btn btn-primary" name="submitForm" id="submitForm" type="submit">ExtraClass</button>
+<button class="btn btn-primary" name="submit" type="submit">ExtraClass</button>
 </form>
 </center>
 ';

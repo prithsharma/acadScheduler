@@ -22,7 +22,7 @@ echo "<html>
 		
 		$('#calendar').fullCalendar({
 			header: {
-				left: 'prev,next',
+				left: 'prev,next,today',
 				center: 'title',
 				right: 'month, agendaWeek, agendaDay'
 			},
